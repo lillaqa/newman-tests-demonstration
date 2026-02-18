@@ -1,0 +1,173 @@
+{
+  "info": {
+    "_postman_id": "c6fa5ea0-9a5f-46a6-ad55-896bd14615a9",
+    "name": "Namedays API collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "namedays for today",
+      "id": "b079e154-d8fc-45c4-93a7-8a2eb951ba6e",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://nameday.abalin.net/api/V2/today/{timezone}?timezone=Europe/Prague",
+          "protocol": "https",
+          "host": [
+            "nameday",
+            "abalin",
+            "net"
+          ],
+          "path": [
+            "api",
+            "V2",
+            "today",
+            "{timezone}"
+          ],
+          "query": [
+            {
+              "key": "timezone",
+              "value": "Europe/Prague",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "specific date (params)",
+      "id": "7095a6ef-3f51-4a14-a9ef-af12977292cb",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://nameday.abalin.net/api/V2/date?day=1&month=1",
+          "protocol": "https",
+          "host": [
+            "nameday",
+            "abalin",
+            "net"
+          ],
+          "path": [
+            "api",
+            "V2",
+            "date"
+          ],
+          "query": [
+            {
+              "key": "day",
+              "value": "1"
+            },
+            {
+              "key": "month",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "specific date (body)",
+      "id": "69f06121-f87f-47db-a059-eded1f57b70c",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"day\": 1,\n  \"month\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://nameday.abalin.net/api/V2/date",
+          "protocol": "https",
+          "host": [
+            "nameday",
+            "abalin",
+            "net"
+          ],
+          "path": [
+            "api",
+            "V2",
+            "date"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "specific name",
+      "id": "944652c9-b15c-438b-bac4-e6720a66e195",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"László\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://nameday.abalin.net/api/V2/getname",
+          "protocol": "https",
+          "host": [
+            "nameday",
+            "abalin",
+            "net"
+          ],
+          "path": [
+            "api",
+            "V2",
+            "getname"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

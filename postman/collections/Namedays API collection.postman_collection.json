@@ -88,7 +88,50 @@
       "response": []
     },
     {
-      "name": "specific date (body)",
+      "name": "specific date",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "8f01683b-5247-452d-a621-26ccb89591f0",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7c8c2c8e-a559-4d25-ae69-2ef277f7ece5",
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "",
+              "pm.test(\"Statuscode is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Message is correct\", function () {",
+              "    pm.expect(jsonData.message).to.contain(\"Namedays for\");",
+              "});",
+              "",
+              "pm.test(\"Data contains at least one country\", function () {",
+              "    pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);",
+              "});",
+              "",
+              "pm.test(\"Data has exactly 20 elements\", function () {",
+              "    pm.expect(Object.keys(jsonData.data).length).to.equal(20);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "69f06121-f87f-47db-a059-eded1f57b70c",
       "request": {
         "auth": {
@@ -104,7 +147,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"day\": 1,\n  \"month\": 1\n}",
+          "raw": "{\n  \"day\": 30,\n  \"month\": 10\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -164,6 +207,81 @@
             "api",
             "V2",
             "getname"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "invalid date",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "8f01683b-5247-452d-a621-26ccb89591f0",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7c8c2c8e-a559-4d25-ae69-2ef277f7ece5",
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "",
+              "pm.test(\"Statuscode is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Error message is correct\", function () {",
+              "    pm.expect(jsonData.message).to.eql(\"missing or invalid parameters\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "444dc15c-76af-40d9-88f2-4cf9b793fd0a",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"day\": 40,\n  \"month\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://nameday.abalin.net/api/V2/date",
+          "protocol": "https",
+          "host": [
+            "nameday",
+            "abalin",
+            "net"
+          ],
+          "path": [
+            "api",
+            "V2",
+            "date"
           ]
         }
       },

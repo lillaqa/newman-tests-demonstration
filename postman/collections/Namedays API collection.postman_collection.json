@@ -7,6 +7,44 @@
   "item": [
     {
       "name": "namedays for today",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "76a92899-9514-4292-b013-dceea5eace83",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "68076c2f-b1b5-40ce-826c-6253f4602270",
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "",
+              "pm.test(\"Statuscode is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Data contains at least one country\", function () {",
+              "    pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);",
+              "});",
+              "",
+              "pm.test(\"Data has exactly 20 elements\", function () {",
+              "    pm.expect(Object.keys(jsonData.data).length).to.equal(20);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "b079e154-d8fc-45c4-93a7-8a2eb951ba6e",
       "request": {
         "auth": {
@@ -38,7 +76,7 @@
             {
               "key": "timezone",
               "value": "Europe/Prague",
-              "type": "text"
+              "uuid": "60dd2280-985b-4db8-928b-6732c1cc309c"
             }
           ]
         }
@@ -47,6 +85,44 @@
     },
     {
       "name": "specific date (params)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "fee9b705-0d36-4eef-998d-c5764f7b0154",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "b75d7e34-9ade-48d7-8933-974a4c46d965",
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "",
+              "pm.test(\"Statuscode is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Data contains at least one country\", function () {",
+              "    pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);",
+              "});",
+              "",
+              "pm.test(\"Data has exactly 20 elements\", function () {",
+              "    pm.expect(Object.keys(jsonData.data).length).to.equal(20);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "7095a6ef-3f51-4a14-a9ef-af12977292cb",
       "request": {
         "auth": {
@@ -61,7 +137,7 @@
           }
         ],
         "url": {
-          "raw": "https://nameday.abalin.net/api/V2/date?day=1&month=1",
+          "raw": "https://nameday.abalin.net/api/V2/date?day=12&month=1",
           "protocol": "https",
           "host": [
             "nameday",
@@ -76,11 +152,13 @@
           "query": [
             {
               "key": "day",
-              "value": "1"
+              "value": "12",
+              "uuid": "01ccedb0-c236-4e0f-b6b0-69ddb83e7813"
             },
             {
               "key": "month",
-              "value": "1"
+              "value": "1",
+              "uuid": "86b9242c-4953-4a5a-9a66-b56ee66534f5"
             }
           ]
         }
@@ -263,7 +341,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"day\": 40,\n  \"month\": 10\n}",
+          "raw": "{\n  \"day\": 30,\n  \"month\": 22\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -282,6 +360,84 @@
             "api",
             "V2",
             "date"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "invalid date (params)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f06c7794-7b42-49a0-9499-c97230f649c5",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "c3c52693-35d5-46f5-9dc3-26db3de3bfb0",
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "",
+              "pm.test(\"Statuscode is 200\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Error message is correct\", function () {",
+              "    pm.expect(jsonData.message).to.eql(\"invalid date\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "6b135963-a9d3-41e8-aa4f-84257f3948f9",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://nameday.abalin.net/api/V2/date?day=33&month=1",
+          "protocol": "https",
+          "host": [
+            "nameday",
+            "abalin",
+            "net"
+          ],
+          "path": [
+            "api",
+            "V2",
+            "date"
+          ],
+          "query": [
+            {
+              "key": "day",
+              "value": "33",
+              "uuid": "d8c403fd-70ea-4f10-a604-f21b016764d6"
+            },
+            {
+              "key": "month",
+              "value": "1",
+              "uuid": "65392c0a-53cd-4d7f-990d-01fa017b3c60"
+            }
           ]
         }
       },

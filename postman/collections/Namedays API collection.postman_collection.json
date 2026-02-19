@@ -37,7 +37,12 @@
               "",
               "pm.test(\"Data has exactly 20 elements\", function () {",
               "    pm.expect(Object.keys(jsonData.data).length).to.equal(20);",
-              "});"
+              "});",
+              "",
+              "pm.test(\"Response time is fast\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(250);",
+              "});",
+              ""
             ],
             "type": "text/javascript",
             "packages": {},
@@ -115,7 +120,12 @@
               "",
               "pm.test(\"Data has exactly 20 elements\", function () {",
               "    pm.expect(Object.keys(jsonData.data).length).to.equal(20);",
-              "});"
+              "});",
+              "",
+              "pm.test(\"Response time is fast\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(250);",
+              "});",
+              ""
             ],
             "type": "text/javascript",
             "packages": {},
@@ -201,6 +211,10 @@
               "",
               "pm.test(\"Data has exactly 20 elements\", function () {",
               "    pm.expect(Object.keys(jsonData.data).length).to.equal(20);",
+              "});",
+              "",
+              "pm.test(\"Response time is fast\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(250);",
               "});",
               ""
             ],
@@ -318,7 +332,12 @@
               "",
               "pm.test(\"Error message is correct\", function () {",
               "    pm.expect(jsonData.message).to.eql(\"missing or invalid parameters\");",
-              "});"
+              "});",
+              "",
+              "pm.test(\"Response time is fast\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(250);",
+              "});",
+              ""
             ],
             "type": "text/javascript",
             "packages": {},
@@ -393,7 +412,12 @@
               "",
               "pm.test(\"Error message is correct\", function () {",
               "    pm.expect(jsonData.message).to.eql(\"invalid date\");",
-              "});"
+              "});",
+              "",
+              "pm.test(\"Response time is fast\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(250);",
+              "});",
+              ""
             ],
             "type": "text/javascript",
             "packages": {},

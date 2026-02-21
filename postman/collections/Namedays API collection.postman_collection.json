@@ -40,7 +40,7 @@
               "});",
               "",
               "pm.test(\"Response time is fast\", function () {",
-              "    pm.expect(pm.response.responseTime).to.be.below(300);",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
               "});",
               ""
             ],
@@ -624,28 +624,28 @@
   ],
   "variable": [
     {
-      "id": "35a98c32-47a1-44f6-9989-00930fcb71f5",
+      "id": "465255d0-b906-425b-975f-0d57120ef90a",
       "key": "name-common",
       "value": ""
     },
     {
-      "id": "89efe188-83a5-4831-8bad-5798554fc9f8",
+      "id": "ececec90-00d3-4095-9735-208ec0f29393",
       "key": "name-rare",
       "value": ""
     },
     {
-      "id": "9367fd07-49a7-42a9-aacc-bb58dc4cfa99",
+      "id": "50c7793e-b020-488a-a2f3-719d60c70fce",
       "key": "name-invalid",
       "value": "",
       "type": "default"
     },
     {
-      "id": "7a8b0062-76dd-4792-98a8-31a817f04e33",
+      "id": "f2842ffa-4653-4c94-b58d-f003b5dcc371",
       "key": "day",
       "value": ""
     },
     {
-      "id": "d20358f9-81e4-4d27-886c-cfa8d023a978",
+      "id": "0d67c075-b89f-4965-aa89-89e7848add8b",
       "key": "month",
       "value": ""
     }

@@ -378,7 +378,10 @@
           "script": {
             "id": "6c03f459-395c-4343-9a0f-411139635d3a",
             "exec": [
-              ""
+              "//generate a random spring and store as collection variable name-invalid",
+              "let randomSpring  = Math.random().toString(12).substring(2, 12);",
+              "",
+              "pm.collectionVariables.set(\"name-invalid\", randomSpring);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -391,10 +394,17 @@
             "id": "4ad35731-5559-409d-aacf-db8da38a53d3",
             "exec": [
               "let jsonData = pm.response.json();",
+              "let name = pm.collectionVariables.get(\"name-invalid\")",
               "",
               "pm.test(\"Statuscode is 200\", function () {",
               "    pm.response.to.have.status(200);",
-              "});"
+              "});",
+              "",
+              "pm.test(\"Message is Namedays for random name\", function () {",
+              "    pm.expect(jsonData.message).to.eql(\"Namedays for name \" + name);",
+              "});",
+              "",
+              ""
             ],
             "type": "text/javascript",
             "packages": {},
@@ -607,17 +617,17 @@
   ],
   "variable": [
     {
-      "id": "49e86e1b-546d-4131-a7bb-632707bf4319",
+      "id": "e3c8177d-3b1f-4f8b-b503-532831be3184",
       "key": "name-common",
       "value": ""
     },
     {
-      "id": "bd0ab6a8-5f24-4944-847f-49202c1c6342",
+      "id": "42f4e504-3fb3-46c9-b01a-b2f8bf2a9c70",
       "key": "name-rare",
       "value": ""
     },
     {
-      "id": "38739158-7944-487e-a38e-934387e4bcce",
+      "id": "bad20de9-63da-47a5-ba1e-6965ea3aa359",
       "key": "name-invalid",
       "value": "",
       "type": "default"

@@ -203,6 +203,7 @@
               "let month = pm.collectionVariables.get(\"month\");",
               "let day = pm.collectionVariables.get(\"day\");",
               "let monthFull = month < 10 ? \"0\" + month : \"\" + month;",
+              "let dayFull = day < 10 ? \"0\" + day : \"\" + day;",
               "",
               "",
               "pm.test(\"Statuscode is 200\", function () {",
@@ -210,7 +211,7 @@
               "});",
               "",
               "pm.test(\"Message is correct\", function () {",
-              "    pm.expect(jsonData.message).to.contain(\"Namedays for \" + monthFull + \"-\" + day);",
+              "    pm.expect(jsonData.message).to.contain(\"Namedays for \" + monthFull + \"-\" + dayFull);",
               "});",
               "",
               "pm.test(\"Data contains at least one country\", function () {",
@@ -624,28 +625,28 @@
   ],
   "variable": [
     {
-      "id": "465255d0-b906-425b-975f-0d57120ef90a",
+      "id": "c96b1ebb-dba6-489d-bf5d-5b09ee12e342",
       "key": "name-common",
       "value": ""
     },
     {
-      "id": "ececec90-00d3-4095-9735-208ec0f29393",
+      "id": "06d082ed-b603-4d0c-a323-2ff1408e9310",
       "key": "name-rare",
       "value": ""
     },
     {
-      "id": "50c7793e-b020-488a-a2f3-719d60c70fce",
+      "id": "b6db9f3d-a9f4-4f98-a638-2a8da83eb275",
       "key": "name-invalid",
       "value": "",
       "type": "default"
     },
     {
-      "id": "f2842ffa-4653-4c94-b58d-f003b5dcc371",
+      "id": "46f8467d-1e85-4bc6-bd0c-0c5dc5178d5c",
       "key": "day",
       "value": ""
     },
     {
-      "id": "0d67c075-b89f-4965-aa89-89e7848add8b",
+      "id": "98b39294-1f87-44ae-b640-98ce9b746e8b",
       "key": "month",
       "value": ""
     }

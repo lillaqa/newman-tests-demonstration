@@ -378,7 +378,6 @@
           "script": {
             "id": "6c03f459-395c-4343-9a0f-411139635d3a",
             "exec": [
-              "//generate a random spring and store as collection variable name-invalid",
               "let randomSpring  = Math.random().toString(12).substring(2, 12);",
               "",
               "pm.collectionVariables.set(\"name-invalid\", randomSpring);"
@@ -617,17 +616,17 @@
   ],
   "variable": [
     {
-      "id": "e3c8177d-3b1f-4f8b-b503-532831be3184",
+      "id": "b05e2480-e3b3-46b8-a09a-bd34be5ed7ae",
       "key": "name-common",
       "value": ""
     },
     {
-      "id": "42f4e504-3fb3-46c9-b01a-b2f8bf2a9c70",
+      "id": "47533e43-d8c6-4e13-ad62-bf1479182297",
       "key": "name-rare",
       "value": ""
     },
     {
-      "id": "bad20de9-63da-47a5-ba1e-6965ea3aa359",
+      "id": "46abbe87-b795-4b5a-8bf4-ad62f8cab0d3",
       "key": "name-invalid",
       "value": "",
       "type": "default"

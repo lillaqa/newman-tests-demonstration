@@ -183,7 +183,11 @@
           "script": {
             "id": "8f01683b-5247-452d-a621-26ccb89591f0",
             "exec": [
-              ""
+              "let randomDay = Math.floor(Math.random() * 31) + 1;",
+              "let randomMonth = Math.floor(Math.random() * 12) + 1;",
+              "",
+              "pm.collectionVariables.set(\"day\", randomDay);",
+              "pm.collectionVariables.set(\"month\", randomMonth);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -196,13 +200,17 @@
             "id": "7c8c2c8e-a559-4d25-ae69-2ef277f7ece5",
             "exec": [
               "let jsonData = pm.response.json();",
+              "let month = pm.collectionVariables.get(\"month\");",
+              "let day = pm.collectionVariables.get(\"day\");",
+              "let monthFull = month < 10 ? \"0\" + month : \"\" + month;",
+              "",
               "",
               "pm.test(\"Statuscode is 200\", function () {",
               "    pm.response.to.have.status(200);",
               "});",
               "",
               "pm.test(\"Message is correct\", function () {",
-              "    pm.expect(jsonData.message).to.contain(\"Namedays for\");",
+              "    pm.expect(jsonData.message).to.contain(\"Namedays for \" + monthFull + \"-\" + day);",
               "});",
               "",
               "pm.test(\"Data contains at least one country\", function () {",
@@ -239,7 +247,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"day\": 30,\n  \"month\": 10\n}",
+          "raw": "{\n  \"day\": {{day}},\n  \"month\": {{month}}\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -616,20 +624,30 @@
   ],
   "variable": [
     {
-      "id": "b05e2480-e3b3-46b8-a09a-bd34be5ed7ae",
+      "id": "4cd163c2-062a-4f0a-bad0-1b929b958efd",
       "key": "name-common",
       "value": ""
     },
     {
-      "id": "47533e43-d8c6-4e13-ad62-bf1479182297",
+      "id": "34476fa1-3988-4f75-9fcc-232acd7e6d32",
       "key": "name-rare",
       "value": ""
     },
     {
-      "id": "46abbe87-b795-4b5a-8bf4-ad62f8cab0d3",
+      "id": "a27ef24a-94bf-494b-9852-bc60dd6d1578",
       "key": "name-invalid",
       "value": "",
       "type": "default"
+    },
+    {
+      "id": "0677898d-21d2-4e17-b7d3-52b28d33fe32",
+      "key": "day",
+      "value": ""
+    },
+    {
+      "id": "4bdd9662-c8be-45fe-bbb7-95dcee21eb7c",
+      "key": "month",
+      "value": ""
     }
   ]
 }

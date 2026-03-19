@@ -1,0 +1,95 @@
+{
+  "info": {
+    "_postman_id": "6a4c0e67-39f4-43bc-9e66-cdfa3e210c4d",
+    "name": "PST Toolshop",
+    "description": "This is a collection for the Practice Software Testing - Toolshop site.\n\n[https://practicesoftwaretesting.com](https://practicesoftwaretesting.com)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "All Brands",
+      "id": "cc11bd76-0a8d-4dd2-ac2e-a80e996945c6",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.practicesoftwaretesting.com/brands",
+          "protocol": "https",
+          "host": [
+            "api",
+            "practicesoftwaretesting",
+            "com"
+          ],
+          "path": [
+            "brands"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "All Products",
+      "id": "eaae7e46-3d59-4b15-9523-34177c23c062",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.practicesoftwaretesting.com/products",
+          "protocol": "https",
+          "host": [
+            "api",
+            "practicesoftwaretesting",
+            "com"
+          ],
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Full Category Tree",
+      "id": "9a5c87a1-4c5a-430c-8c29-cf0592177dc7",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.practicesoftwaretesting.com/brands",
+          "protocol": "https",
+          "host": [
+            "api",
+            "practicesoftwaretesting",
+            "com"
+          ],
+          "path": [
+            "brands"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "All Brands",
+      "id": "5746e503-ddf8-4394-9e6f-7140d860acba",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.practicesoftwaretesting.com/categories/tree",
+          "protocol": "https",
+          "host": [
+            "api",
+            "practicesoftwaretesting",
+            "com"
+          ],
+          "path": [
+            "categories",
+            "tree"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

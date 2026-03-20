@@ -1,10 +1,10 @@
 $kind: http-request
-name: All Brands
-url: "{{baseURL}}/brands"
+name: Specific category
+url: "{{baseURL}}/categories/tree/{{categoryID}}"
 method: GET
 scripts:
   - type: afterResponse
-    code: |-
+    code: |+
       let jsonData = pm.response.json();
 
       pm.test("Statuscode is 200", function () {
@@ -20,10 +20,5 @@ scripts:
           pm.expect(pm.response.responseTime).to.be.below(1000);
       });
 
-      if (jsonData.length > 0) {
-          const firstItem = jsonData[0];
-          pm.environment.set("brandID", firstItem.id);
-          pm.collectionVariables.set("tempBrandName", firstItem.name);
-      }
     language: text/javascript
-order: 1000
+order: 1699606923575918

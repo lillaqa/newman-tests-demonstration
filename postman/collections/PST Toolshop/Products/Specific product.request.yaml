@@ -1,6 +1,6 @@
 $kind: http-request
-name: All Products
-url: "{{baseURL}}/products"
+name: Specific product
+url: "{{baseURL}}/products/{{productID}}"
 method: GET
 scripts:
   - type: afterResponse
@@ -19,11 +19,5 @@ scripts:
       pm.test("Response time is fast", function () {
           pm.expect(pm.response.responseTime).to.be.below(1000);
       });
-
-      if (jsonData.length > 2) {
-          const thirdItem = jsonData[1];
-          pm.environment.set("productID", thirdItem.id);
-          pm.collectionVariables.set("tempProdName", thirdItem.name);
-      }
     language: text/javascript
-order: 1000
+order: 371510581658517

@@ -7,234 +7,252 @@
   },
   "item": [
     {
-      "name": "All Brands",
-      "event": [
+      "name": "Brands",
+      "item": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "4fb3e7aa-2506-40b7-ae1d-536f1b8a3114",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          "name": "All Brands",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4fb3e7aa-2506-40b7-ae1d-536f1b8a3114",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "9a0ec7e5-af95-4027-93e4-22c314a25c97",
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Statuscode is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Data contains at least one country\", function () {",
+                  "    pm.expect(Object.keys(jsonData).length).to.be.greaterThan(0);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is fast\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "cc11bd76-0a8d-4dd2-ac2e-a80e996945c6",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/brands",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            }
+          },
+          "response": []
         },
         {
-          "listen": "test",
-          "script": {
-            "id": "9a0ec7e5-af95-4027-93e4-22c314a25c97",
-            "exec": [
-              "let jsonData = pm.response.json();",
-              "",
-              "pm.test(\"Statuscode is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "pm.test(\"Data contains at least one country\", function () {",
-              "    pm.expect(Object.keys(jsonData).length).to.be.greaterThan(0);",
-              "});",
-              "",
-              "",
-              "pm.test(\"Response time is fast\", function () {",
-              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          "name": "Specific Brand",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4fb3e7aa-2506-40b7-ae1d-536f1b8a3114",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "9a0ec7e5-af95-4027-93e4-22c314a25c97",
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Statuscode is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Data contains at least one country\", function () {",
+                  "    pm.expect(Object.keys(jsonData).length).to.be.equal(3);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is fast\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "be91ed52-da93-4ea5-83f9-64fe3dfe4258",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/brands/{{brandID}}",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "brands",
+                "{{brandID}}"
+              ]
+            }
+          },
+          "response": []
         }
       ],
-      "id": "cc11bd76-0a8d-4dd2-ac2e-a80e996945c6",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseURL}}/brands",
-          "host": [
-            "{{baseURL}}"
-          ],
-          "path": [
-            "brands"
-          ]
-        }
-      },
-      "response": []
+      "id": "58252814-33e7-49d7-9aed-04e5b735be59"
     },
     {
-      "name": "All Products",
-      "event": [
+      "name": "Categories",
+      "item": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "c17e711e-bfe0-42eb-ae8b-e2893b1f613a",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "9c6dacdc-c545-4f7c-98c2-23925e388f7a",
-            "exec": [
-              "let jsonData = pm.response.json();",
-              "",
-              "pm.test(\"Statuscode is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "pm.test(\"Data contains at least one country\", function () {",
-              "    pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);",
-              "});",
-              "",
-              "",
-              "pm.test(\"Response time is fast\", function () {",
-              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          "name": "Full Category Tree",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "c17e711e-bfe0-42eb-ae8b-e2893b1f613a",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "9c6dacdc-c545-4f7c-98c2-23925e388f7a",
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Statuscode is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Data contains at least one country\", function () {",
+                  "    pm.expect(Object.keys(jsonData).length).to.be.greaterThan(0);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is fast\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "9a5c87a1-4c5a-430c-8c29-cf0592177dc7",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/categories/tree",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "categories",
+                "tree"
+              ]
+            }
+          },
+          "response": []
         }
       ],
-      "id": "eaae7e46-3d59-4b15-9523-34177c23c062",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseURL}}/products",
-          "host": [
-            "{{baseURL}}"
-          ],
-          "path": [
-            "products"
-          ]
-        }
-      },
-      "response": []
+      "id": "416cd886-f0f8-4600-a3f5-ba3fbc168b28"
     },
     {
-      "name": "Full Category Tree",
-      "event": [
+      "name": "Products",
+      "item": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "c17e711e-bfe0-42eb-ae8b-e2893b1f613a",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "9c6dacdc-c545-4f7c-98c2-23925e388f7a",
-            "exec": [
-              "let jsonData = pm.response.json();",
-              "",
-              "pm.test(\"Statuscode is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "pm.test(\"Data contains at least one country\", function () {",
-              "    pm.expect(Object.keys(jsonData).length).to.be.greaterThan(0);",
-              "});",
-              "",
-              "",
-              "pm.test(\"Response time is fast\", function () {",
-              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          "name": "All Products",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "c17e711e-bfe0-42eb-ae8b-e2893b1f613a",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "9c6dacdc-c545-4f7c-98c2-23925e388f7a",
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Statuscode is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Data contains at least one country\", function () {",
+                  "    pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is fast\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "eaae7e46-3d59-4b15-9523-34177c23c062",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/products",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": []
         }
       ],
-      "id": "9a5c87a1-4c5a-430c-8c29-cf0592177dc7",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseURL}}/categories/tree",
-          "host": [
-            "{{baseURL}}"
-          ],
-          "path": [
-            "categories",
-            "tree"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Specific Brand",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "4fb3e7aa-2506-40b7-ae1d-536f1b8a3114",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "9a0ec7e5-af95-4027-93e4-22c314a25c97",
-            "exec": [
-              "let jsonData = pm.response.json();",
-              "",
-              "pm.test(\"Statuscode is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "pm.test(\"Data contains at least one country\", function () {",
-              "    pm.expect(Object.keys(jsonData).length).to.be.equal(3);",
-              "});",
-              "",
-              "",
-              "pm.test(\"Response time is fast\", function () {",
-              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "be91ed52-da93-4ea5-83f9-64fe3dfe4258",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseURL}}/brands/{{brandID}}",
-          "host": [
-            "{{baseURL}}"
-          ],
-          "path": [
-            "brands",
-            "{{brandID}}"
-          ]
-        }
-      },
-      "response": []
+      "id": "c33881c1-4b26-4bf8-a053-c1ff577bc929"
     }
   ]
 }

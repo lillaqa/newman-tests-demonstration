@@ -90,7 +90,7 @@
               "});",
               "",
               "pm.test(\"Data contains at least one country\", function () {",
-              "    pm.expect(Object.keys(jsonData).length).to.be.greaterThan(0);",
+              "    pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);",
               "});",
               "",
               "",
@@ -162,63 +162,6 @@
         }
       ],
       "id": "9a5c87a1-4c5a-430c-8c29-cf0592177dc7",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseURL}}/brands",
-          "host": [
-            "{{baseURL}}"
-          ],
-          "path": [
-            "brands"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "All Brands",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "c17e711e-bfe0-42eb-ae8b-e2893b1f613a",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "9c6dacdc-c545-4f7c-98c2-23925e388f7a",
-            "exec": [
-              "let jsonData = pm.response.json();",
-              "",
-              "pm.test(\"Statuscode is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "pm.test(\"Data contains at least one country\", function () {",
-              "    pm.expect(Object.keys(jsonData).length).to.be.greaterThan(0);",
-              "});",
-              "",
-              "",
-              "pm.test(\"Response time is fast\", function () {",
-              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "5746e503-ddf8-4394-9e6f-7140d860acba",
       "request": {
         "method": "GET",
         "header": [],

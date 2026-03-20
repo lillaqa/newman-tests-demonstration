@@ -234,6 +234,64 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Specific Brand",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "4fb3e7aa-2506-40b7-ae1d-536f1b8a3114",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "9a0ec7e5-af95-4027-93e4-22c314a25c97",
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "",
+              "pm.test(\"Statuscode is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Data contains at least one country\", function () {",
+              "    pm.expect(Object.keys(jsonData).length).to.be.equal(3);",
+              "});",
+              "",
+              "",
+              "pm.test(\"Response time is fast\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "be91ed52-da93-4ea5-83f9-64fe3dfe4258",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/brands/{{brandID}}",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "brands",
+            "{{brandID}}"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }

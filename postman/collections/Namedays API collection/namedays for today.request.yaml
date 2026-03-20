@@ -1,0 +1,31 @@
+$kind: http-request
+url: https://nameday.abalin.net/api/V2/today/{timezone}?timezone=Europe/Prague
+method: GET
+headers:
+  Content-Type: application/json
+queryParams:
+  timezone: Europe/Prague
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |
+      let jsonData = pm.response.json();
+
+      pm.test("Statuscode is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Data contains at least one country", function () {
+          pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);
+      });
+
+      pm.test("Data has exactly 20 elements", function () {
+          pm.expect(Object.keys(jsonData.data).length).to.equal(20);
+      });
+
+      pm.test("Response time is fast", function () {
+          pm.expect(pm.response.responseTime).to.be.below(1000);
+      });
+    language: text/javascript
+order: 1000

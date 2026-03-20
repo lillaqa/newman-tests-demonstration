@@ -1,0 +1,7 @@
+$kind: collection
+variables:
+  name-common: ""
+  name-rare: ""
+  name-invalid: ""
+  day: ""
+  month: ""

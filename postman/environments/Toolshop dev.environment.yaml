@@ -1,0 +1,14 @@
+name: Toolshop dev
+values:
+  - key: baseURL
+    value: ''
+    enabled: true
+  - key: brandID
+    value: ''
+    enabled: true
+  - key: productID
+    value: ''
+    enabled: true
+  - key: categoryID
+    value: ''
+    enabled: true

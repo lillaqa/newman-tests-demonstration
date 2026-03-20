@@ -1,0 +1,7 @@
+$kind: collection
+description: |-
+  This is a collection for the Practice Software Testing - Toolshop site.
+
+  [https://practicesoftwaretesting.com](https://practicesoftwaretesting.com)
+variables:
+  tempBrandName: ""

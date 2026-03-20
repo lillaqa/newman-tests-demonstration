@@ -1,0 +1,35 @@
+$kind: http-request
+url: https://nameday.abalin.net/api/V2/getname
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "name": "{{name-invalid}}"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: beforeRequest
+    code: |-
+      let randomSpring  = Math.random().toString(12).substring(2, 12);
+
+      pm.collectionVariables.set("name-invalid", randomSpring);
+    language: text/javascript
+  - type: afterResponse
+    code: |+
+      let jsonData = pm.response.json();
+      let name = pm.collectionVariables.get("name-invalid")
+
+      pm.test("Statuscode is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Message is Namedays for random name", function () {
+          pm.expect(jsonData.message).to.eql("Namedays for name " + name);
+      });
+
+    language: text/javascript
+order: 5000

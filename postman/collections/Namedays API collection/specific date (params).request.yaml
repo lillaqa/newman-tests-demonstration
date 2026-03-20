@@ -1,0 +1,32 @@
+$kind: http-request
+url: https://nameday.abalin.net/api/V2/date?day=12&month=1
+method: GET
+headers:
+  Content-Type: application/json
+queryParams:
+  day: "12"
+  month: "1"
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |
+      let jsonData = pm.response.json();
+
+      pm.test("Statuscode is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Data contains at least one country", function () {
+          pm.expect(Object.keys(jsonData.data).length).to.be.greaterThan(0);
+      });
+
+      pm.test("Data has exactly 20 elements", function () {
+          pm.expect(Object.keys(jsonData.data).length).to.equal(20);
+      });
+
+      pm.test("Response time is fast", function () {
+          pm.expect(pm.response.responseTime).to.be.below(250);
+      });
+    language: text/javascript
+order: 2000

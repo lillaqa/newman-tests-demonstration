@@ -1,0 +1,28 @@
+$kind: http-request
+url: https://nameday.abalin.net/api/V2/date?day=33&month=1
+method: GET
+headers:
+  Content-Type: application/json
+queryParams:
+  day: "33"
+  month: "1"
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |
+      let jsonData = pm.response.json();
+
+      pm.test("Statuscode is 200", function () {
+          pm.response.to.have.status(400);
+      });
+
+      pm.test("Error message is correct", function () {
+          pm.expect(jsonData.message).to.eql("invalid date");
+      });
+
+      pm.test("Response time is fast", function () {
+          pm.expect(pm.response.responseTime).to.be.below(250);
+      });
+    language: text/javascript
+order: 7000

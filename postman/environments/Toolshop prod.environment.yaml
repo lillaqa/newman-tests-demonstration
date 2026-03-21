@@ -12,3 +12,6 @@ values:
   - key: categoryID
     value: ''
     enabled: true
+  - key: bearerToken
+    value: ''
+    enabled: true

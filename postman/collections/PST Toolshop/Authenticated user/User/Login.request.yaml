@@ -1,0 +1,19 @@
+$kind: http-request
+name: Login
+url: "{{baseURL}}/users/login"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "email": "customer@practicesoftwaretesting.com",
+      "password": "welcome01"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      let jsonData = pm.response.json(); 
+
+      pm.environment.set("bearerToken", jsonData.access_token)
+    language: text/javascript
+order: 1774116502429

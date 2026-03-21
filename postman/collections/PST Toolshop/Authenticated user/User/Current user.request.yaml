@@ -1,0 +1,9 @@
+$kind: http-request
+name: Current user
+url: "{{baseURL}}/users/me"
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: "{{bearerToken}}"
+order: 1361414992185163
